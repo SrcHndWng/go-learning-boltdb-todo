@@ -10,8 +10,8 @@ const dbFile = "database.db"
 
 // Data contains data in bucket
 type Data struct {
-	key   string
-	value string
+	ID    string `json:"id"`
+	Value string `json:"value"`
 }
 
 // Create registers new data to bucket.

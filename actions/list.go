@@ -1,6 +1,7 @@
 package actions
 
 import (
+	"encoding/json"
 	"fmt"
 
 	"github.com/SrcHndWng/go-learning-boltdb-todo/dataAccess"
@@ -13,6 +14,12 @@ func List(c *cli.Context) error {
 	if err != nil {
 		return err
 	}
-	fmt.Println(todos)
+	for _, todo := range todos {
+		bytes, err := json.Marshal(&todo)
+		if err != nil {
+			return err
+		}
+		fmt.Println(string(bytes))
+	}
 	return nil
 }
