@@ -7,12 +7,7 @@ import (
 
 // Create registers your toto.
 func Create(c *cli.Context) error {
-	todo, err := dataAccess.NewTodo()
-	if err != nil {
-		return err
-	}
-
-	err = todo.Create(c.Args().First())
+	err := dataAccess.Create("todos", c.Args().First())
 	if err != nil {
 		return err
 	}

@@ -9,12 +9,7 @@ import (
 
 // List prints your todos
 func List(c *cli.Context) error {
-	// fmt.Println("list!!")
-	todo, err := dataAccess.NewTodo()
-	if err != nil {
-		return err
-	}
-	todos, err := todo.List()
+	todos, err := dataAccess.List("todos")
 	if err != nil {
 		return err
 	}
