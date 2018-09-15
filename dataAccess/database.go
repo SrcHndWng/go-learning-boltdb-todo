@@ -17,7 +17,7 @@ type Data struct {
 }
 
 // Create registers new data to bucket.
-func Create(bucket string, data string) error {
+func Create(bucket, data string) error {
 	db, err := bolt.Open(dbFile, 0600, nil)
 	if err != nil {
 		return err
@@ -62,7 +62,7 @@ func List(bucket string) ([]Data, error) {
 }
 
 // Search finds data by bucket, id.
-func Search(bucket string, id string) (Data, error) {
+func Search(bucket, id string) (Data, error) {
 	db, err := bolt.Open(dbFile, 0600, nil)
 	if err != nil {
 		return Data{}, err
