@@ -10,6 +10,10 @@ import (
 
 // Search prints your toto by id.
 func Search(c *cli.Context) error {
+	if c.Args().First() == "" {
+		fmt.Println(invalidArgsMessage)
+		return nil
+	}
 	id := c.Args().First()
 	todo, err := dataAccess.Search("todos", id)
 	if todo.ID == "" {
