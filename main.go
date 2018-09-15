@@ -28,11 +28,11 @@ func main() {
 			Action:    actions.Create,
 		},
 		{
-			Name:      "show",
+			Name:      "search",
 			ShortName: "s",
-			Usage:     "Shows your todo by id",
+			Usage:     "Searchs your todo by id",
 			UsageText: "binary-path show your-todo-id(ex.1)",
-			Action:    actions.Show,
+			Action:    actions.Search,
 		},
 		{
 			Name:      "update",
