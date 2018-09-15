@@ -105,6 +105,26 @@ func Update(bucket, id, data string) error {
 	})
 }
 
+// Delete deletes data.
+func Delete(bucket, id string) error {
+	db, err := bolt.Open(dbFile, 0600, nil)
+	if err != nil {
+		return err
+	}
+	defer db.Close()
+
+	key, err := idToBytes(id)
+	if err != nil {
+		return err
+	}
+
+	return db.Update(func(tx *bolt.Tx) error {
+		b := tx.Bucket([]byte(bucket))
+		err := b.Delete(key)
+		return err
+	})
+}
+
 func keystr(k []byte) string {
 	var s string
 	for _, x := range k {
